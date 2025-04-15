@@ -1,5 +1,9 @@
 #include <iostream>
-#include <maptio/polation.hpp>
+#include <maptio/interpolation/linear_2d_interp.hpp>
+#include <maptio/extrapolation/linear_2d_extrap.hpp>
+#include <maptio/extrapolation/zero_2d_extrap.hpp>
+#include <maptio/extrapolation/constant_2d_extrap.hpp>
+#include <vector>
 
 int main() {
     std::vector<std::vector<double>> dataset2D = {

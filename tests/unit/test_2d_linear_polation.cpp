@@ -1,4 +1,7 @@
 #include "test_2d_polation.hpp"
+#include <maptio/interpolation/linear_2d_interp.hpp>
+#include <maptio/extrapolation/linear_2d_extrap.hpp>
+
 
 TEST_P(Linear2DInterpolationScalarDataset, ScalarLinear2DInterpolationParam) {
     Linear2DInterpolation interpolator(dataset);

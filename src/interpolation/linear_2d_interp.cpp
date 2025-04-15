@@ -1,5 +1,5 @@
 #include <algorithm>
-#include <maptio/polation.hpp>
+#include <maptio/interpolation/linear_2d_interp.hpp>
 
 Linear2DInterpolation::Linear2DInterpolation(
     const std::vector<std::vector<double>>& dataset)

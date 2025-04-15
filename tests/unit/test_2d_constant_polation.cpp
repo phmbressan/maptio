@@ -1,4 +1,5 @@
 #include "test_2d_polation.hpp"
+#include <maptio/extrapolation/constant_2d_extrap.hpp>
 
 TEST_P(Constant2DExtrapolationScalarDataset,
        ScalarConstant2DExtrapolationParam) {

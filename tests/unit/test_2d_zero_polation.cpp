@@ -1,4 +1,5 @@
 #include "test_2d_polation.hpp"
+#include <maptio/extrapolation/zero_2d_extrap.hpp>
 
 TEST_P(Zero2DExtrapolationScalarDataset, ScalarZero2DExtrapolationParam) {
     Zero2DExtrapolation extrapolator(dataset);
