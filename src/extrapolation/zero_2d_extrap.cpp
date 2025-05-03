@@ -11,3 +11,11 @@ void Zero2DExtrapolation::polation_setup() {}
 double Zero2DExtrapolation::polate(double x) {
     return 0.0;
 }
+
+double Zero2DExtrapolation::derivative(double x) {
+    return 0.0;
+}
+
+double Zero2DExtrapolation::integral(double x_i, double x_f) {
+    return 0.0;
+}

@@ -10,4 +10,6 @@ class Linear2DInterpolation : public Polation2D {
 
     void polation_setup() override;
     double polate(double x) override;
+    double derivative(double x) override;
+    double integral(double x_i, double x_f) override;
 };

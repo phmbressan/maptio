@@ -1,5 +1,6 @@
 #include <maptio/interpolation/poly_2d_interp.hpp>
 #include <stdexcept>
+#include <boost/math/quadrature/trapezoidal.hpp>
 
 Polynomial2DInterpolation::Polynomial2DInterpolation(
     const std::vector<std::vector<double>>& dataset)
@@ -20,4 +21,13 @@ void Polynomial2DInterpolation::polation_setup() {
 
 double Polynomial2DInterpolation::polate(double x) {
     return (*interpolator)(x);
+}
+
+double Polynomial2DInterpolation::derivative(double x) {
+    return interpolator->prime(x);
+}
+
+double Polynomial2DInterpolation::integral(double x_i, double x_f) {
+    return boost::math::quadrature::trapezoidal(
+        *interpolator, x_i, x_f);
 }

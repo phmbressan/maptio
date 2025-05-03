@@ -12,6 +12,10 @@ int main() {
     std::vector<std::vector<double>> dataset2D = {
         {0.0, 1.0}, {1.0, 3.0}, {2.0, 5.0}, {3.0, 7.0}};
 
+    std::vector<std::vector<double>> dataset_diff = {
+        {0.0, 1.0}, {0.5, 2.0}, {1.0, 3.0}, {2.0, 5.0}
+    };
+
     Zero2DExtrapolation zeroExtrapolator(dataset2D);
     Linear2DExtrapolation linearExtrapolator(dataset2D);
     Constant2DExtrapolation constantExtrapolator(dataset2D);
@@ -30,6 +34,15 @@ int main() {
               << splineInterpolator.polate(2.5) << std::endl;
     std::cout << "Polynomial Interpolation at x = 2.5: "
               << polynomialInterpolator.polate(2.5) << std::endl;
+
+    Linear2DInterpolation linearInterpolator2(dataset_diff);
+    Spline2DInterpolation splineInterpolator2(dataset_diff);
+    splineInterpolator2.polate(0.7);
+    std::cout << "Linear derivative at x = 0.0: "
+              << splineInterpolator2.integral(1.5,2.0) << std::endl;
+
+    std::cout << "Linear integral at x = 0.0: "
+              << linearInterpolator2.integral(0.0,2.0) << std::endl;
 
     return 0;
 }

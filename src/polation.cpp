@@ -13,6 +13,25 @@ std::vector<double> Polation::polate(const std::vector<double>& x) {
     return results;
 }
 
+// Default implementation for vector derivative (delegates to scalar)
+std::vector<double> Polation2D::derivative(const std::vector<double>& x) {
+    std::vector<double> results;
+    for (double val : x) {
+        results.push_back(derivative(val));
+    }
+    return results;
+}
+
+// Default implementation for vector integral (delegates to scalar)
+std::vector<double> Polation2D::integral(const std::vector<double>& a, 
+                                         const std::vector<double>& b) {
+    std::vector<double> results;
+    for (std::size_t i = 0; i < a.size(); ++i) {
+        results.push_back(integral(a[i], b[i]));
+    }
+    return results;
+}
+
 // ----- Polation2D -----
 Polation2D::Polation2D(const std::vector<std::vector<double>>& dataset)
     : Polation(dataset) {

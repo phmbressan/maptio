@@ -20,3 +20,27 @@ double Constant2DExtrapolation::polate(double x) {
         return y_max;
     return 0.0;
 }
+
+double Constant2DExtrapolation::derivative(double x) {
+    return 0.0;
+}
+
+double Constant2DExtrapolation::integral(double x_i, double x_f) {
+    if (x_f <= x_min) {
+        return (x_f - x_i) * y_min;
+    }
+    if (x_i >= x_max) {
+        return (x_f - x_i) * y_max;
+    }
+    
+    double integral = 0.0;
+
+    if (x_i <= x_min) {
+        integral += (x_min - x_i) * y_min;
+    }
+    if (x_f >= x_max) {
+        integral += (x_f - x_max) * y_max;
+    }
+
+    return integral;
+}
