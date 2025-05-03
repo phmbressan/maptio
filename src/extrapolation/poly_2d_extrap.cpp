@@ -1,6 +1,7 @@
-#include <maptio/extrapolation/poly_2d_extrap.hpp>
-#include <stdexcept>
 #include <boost/math/quadrature/trapezoidal.hpp>
+#include <maptio/extrapolation/poly_2d_extrap.hpp>
+#include <maptio/utils/utils.hpp>
+#include <stdexcept>
 
 Polynomial2DExtrapolation::Polynomial2DExtrapolation(
     const std::vector<std::vector<double>>& dataset)
@@ -14,9 +15,9 @@ void Polynomial2DExtrapolation::polation_setup() {
             "Invalid dataset for polynomial extrapolation.");
     }
 
-    extrapolator.reset(
-        new boost::math::interpolators::barycentric_rational<double>(
-            _x.data(), _y.data(), _x.size()));
+    extrapolator =
+        make_unique<boost::math::interpolators::barycentric_rational<double>>(
+            _x.data(), _y.data(), _x.size());
 }
 
 double Polynomial2DExtrapolation::polate(double x) {
@@ -35,15 +36,14 @@ double Polynomial2DExtrapolation::derivative(double x) {
 
 double Polynomial2DExtrapolation::integral(double x_i, double x_f) {
     if (x_f <= _x[0] || x_i >= _x[_data_length - 1]) {
-        return boost::math::quadrature::trapezoidal(
-            *extrapolator, x_i, x_f);
+        return boost::math::quadrature::trapezoidal(*extrapolator, x_i, x_f);
     }
 
     double integral = 0.0;
 
     if (x_i < _x[0]) {
-        integral += boost::math::quadrature::trapezoidal(
-            *extrapolator, x_i, _x[0]);
+        integral +=
+            boost::math::quadrature::trapezoidal(*extrapolator, x_i, _x[0]);
     }
     if (x_f > _x[_data_length - 1]) {
         integral += boost::math::quadrature::trapezoidal(

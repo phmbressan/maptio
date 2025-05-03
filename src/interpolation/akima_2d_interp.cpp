@@ -2,6 +2,7 @@
 
 #include <boost/math/interpolators/makima.hpp>
 #include <boost/math/quadrature/trapezoidal.hpp>
+#include <maptio/utils/utils.hpp>
 
 Akima2DInterpolation::Akima2DInterpolation(
     const std::vector<std::vector<double>>& dataset)
@@ -10,9 +11,9 @@ Akima2DInterpolation::Akima2DInterpolation(
 }
 
 void Akima2DInterpolation::polation_setup() {
-    akima_spline.reset(
-        new boost::math::interpolators::makima<std::vector<double>>(
-            std::move(_x), std::move(_y)));
+    akima_spline = make_unique<
+        boost::math::interpolators::makima<std::vector<double>>>(
+        std::move(_x), std::move(_y));
 }
 
 double Akima2DInterpolation::polate(double x) {
@@ -24,6 +25,5 @@ double Akima2DInterpolation::derivative(double x) {
 }
 
 double Akima2DInterpolation::integral(double x_i, double x_f) {
-    return boost::math::quadrature::trapezoidal(
-        *akima_spline, x_i, x_f);
+    return boost::math::quadrature::trapezoidal(*akima_spline, x_i, x_f);
 }
