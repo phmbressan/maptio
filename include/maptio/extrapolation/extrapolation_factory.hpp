@@ -12,6 +12,6 @@
 #include <unordered_map>
 #include <functional>
 
-Polation2D extrapolation_factory(
-    const std::string extrapolation_type,
+std::unique_ptr<Polation2D> extrapolation_factory(
+    const std::string& extrapolation_type,
     const std::vector<std::vector<double>>& dataset);

@@ -10,6 +10,7 @@
 #include <unordered_map>
 #include <functional>
 
-Polation2D interpolation_factory(
-    const std::string interpolation_type,
+std::unique_ptr<Polation2D> interpolation_factory(
+    const std::string& interpolation_type,
     const std::vector<std::vector<double>>& dataset);
+
