@@ -1,6 +1,6 @@
 #include <boost/math/quadrature/trapezoidal.hpp>
 #include <maptio/extrapolation/poly_2d_extrap.hpp>
-#include <maptio/utils/utils.hpp>
+#include <memory>
 #include <stdexcept>
 
 Polynomial2DExtrapolation::Polynomial2DExtrapolation(
@@ -15,9 +15,9 @@ void Polynomial2DExtrapolation::polation_setup() {
             "Invalid dataset for polynomial extrapolation.");
     }
 
-    extrapolator =
-        make_unique<boost::math::interpolators::barycentric_rational<double>>(
-            _x.data(), _y.data(), _x.size());
+    extrapolator = std::make_unique<
+        boost::math::interpolators::barycentric_rational<double>>(
+        _x.data(), _y.data(), _x.size());
 }
 
 double Polynomial2DExtrapolation::polate(double x) {

@@ -17,6 +17,6 @@ class Polynomial2DExtrapolation : public Polation2D {
     double integral(double x_i, double x_f) override;
 
    private:
-    std::unique_ptr<boost::math::interpolators::barycentric_rational<double> >
+    std::unique_ptr<boost::math::interpolators::barycentric_rational<double>>
         extrapolator;
 };

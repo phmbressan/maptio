@@ -1,6 +1,5 @@
 #include <algorithm>
 #include <maptio/interpolation/spline_2d_interp.hpp>
-#include <maptio/utils/utils.hpp>
 #include <stdexcept>
 
 Spline2DInterpolation::Spline2DInterpolation(

@@ -32,7 +32,7 @@ double Constant2DExtrapolation::integral(double x_i, double x_f) {
     if (x_i >= x_max) {
         return (x_f - x_i) * y_max;
     }
-    
+
     double integral = 0.0;
 
     if (x_i <= x_min) {

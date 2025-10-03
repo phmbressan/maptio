@@ -1,6 +1,30 @@
 [build-system]
 requires = [
-    "setuptools>=61.0",
-    "pybind11>=2.10"
+    "scikit-build-core>=0.7.0",
+    "nanobind>=2.9"
 ]
-build-backend = "setuptools.build_meta"
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "maptio"
+version = "0.0.1"
+description = "Python package with C++ extension for maptio"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { file = "LICENSE" }
+dependencies = [
+    "nanobind>=2.9"
+]
+
+[project.optional-dependencies]
+lint = [
+    "ruff"
+]
+
+[tool.scikit-build]
+minimum-version = "build-system.requires"
+build-dir = "build/{wheel_tag}"
+wheel.py-api = "cp313"
+
+[tool.cibuildwheel]
+build-verbosity = 1

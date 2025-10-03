@@ -35,12 +35,12 @@ double Linear2DInterpolation::integral(double x_i, double x_f) {
         return (x_f - x_i) * (polate(x_i) + polate(x_f)) / 2.0;
     }
 
-    // Beginning
     integral += (_x[index_i] - x_i) * (_y[index_i] + polate(x_i)) / 2.0;
+
     for (size_t i = index_i; i < index_f - 1; ++i) {
         integral += (_y[i] + _y[i + 1]) * (_x[i + 1] - _x[i]) / 2.0;
     }
-    // End
+
     integral += (x_f - _x[index_f - 1]) * (_y[index_f - 1] + polate(x_f)) / 2.0;
 
     return integral;

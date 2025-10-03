@@ -1,6 +1,6 @@
 #include <boost/math/quadrature/trapezoidal.hpp>
 #include <maptio/interpolation/poly_2d_interp.hpp>
-#include <maptio/utils/utils.hpp>
+#include <memory>
 #include <stdexcept>
 
 Polynomial2DInterpolation::Polynomial2DInterpolation(
@@ -15,9 +15,9 @@ void Polynomial2DInterpolation::polation_setup() {
             "Invalid dataset for polynomial interpolation.");
     }
 
-    interpolator =
-        make_unique<boost::math::interpolators::barycentric_rational<double>>(
-            _x.data(), _y.data(), _x.size());
+    interpolator = std::make_unique<
+        boost::math::interpolators::barycentric_rational<double>>(
+        _x.data(), _y.data(), _x.size());
 }
 
 double Polynomial2DInterpolation::polate(double x) {

@@ -11,7 +11,7 @@ file(GLOB TEST_SOURCES "unit/*.cpp")
 add_executable(test_maptio ${TEST_SOURCES})
 
 target_link_libraries(test_maptio
-    maptio
+    maptio_core
     gtest_main
     ${GTEST_LIBRARIES}
     pthread

@@ -10,9 +10,9 @@ class Polation {
     virtual double polate(double x) = 0;
 
     std::vector<double> polate(const std::vector<double>& x);
+    virtual void polation_setup() = 0;
 
    protected:
-    virtual void polation_setup() = 0;
     std::vector<std::vector<double>> _dataset;
     std::size_t _data_length;
 };
@@ -27,7 +27,7 @@ class Polation2D : public Polation {
     std::vector<double> derivative(const std::vector<double>& x);
 
     virtual double integral(double x_i, double x_f) = 0;
-    std::vector<double> integral(const std::vector<double>& a, 
+    std::vector<double> integral(const std::vector<double>& a,
                                  const std::vector<double>& b);
 
    protected:

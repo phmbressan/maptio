@@ -18,7 +18,7 @@ class Akima2DExtrapolation : public Polation2D {
     double integral(double x_i, double x_f) override;
 
    private:
-   double _x0, _x1, _xn1, _xn;
-   double _a_l, _b_l, _c_l, _d_l;
-   double _a_r, _b_r, _c_r, _d_r;
+    double _x0, _x1, _xn1, _xn;
+    double _a_l, _b_l, _c_l, _d_l;
+    double _a_r, _b_r, _c_r, _d_r;
 };
